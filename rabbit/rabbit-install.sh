@@ -25,6 +25,11 @@ EOF
 ## Update package indices
 sudo apt-get update -y
 
+# Fix bug libssl1.1 for Ubuntu 22.04
+echo "deb http://security.ubuntu.com/ubuntu focal-security main" | sudo tee /etc/apt/sources.list.d/focal-security.list
+sudo apt-get update
+sudo apt-get install libssl1.1
+
 ## Install Erlang packages
 sudo apt-get install -y erlang-base \
                         erlang-asn1 erlang-crypto erlang-eldap erlang-ftp erlang-inets \
